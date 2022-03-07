@@ -1,0 +1,14 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: node-red-lb-svc
+  namespace: node-red
+spec:
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 3000
+      nodePort: 30020
+  selector:
+    app: node-red-toolchain-20220305064824039
+  type: LoadBalancer

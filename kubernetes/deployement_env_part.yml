@@ -1,76 +1,48 @@
-env:
-  - name: NODE_RED_STORAGE_NAME
-    valueFrom:
-      configMapKeyRef:
-        name: node-red-config
-        key: NODE_RED_STORAGE_NAME
-  - name: NODE_RED_STORAGE_DB_NAME
-    valueFrom:
-      configMapKeyRef:
-        name: node-red-config
-        key: NODE_RED_STORAGE_DB_NAME
-  - name: NODE_RED_USERNAME
-    valueFrom:
-      configMapKeyRef:
-        name: node-red-config
-        key: NODE_RED_USERNAME
-  - name: NODE_RED_PASSWORD
-    valueFrom:
-      configMapKeyRef:
-        name: node-red-config
-        key: NODE_RED_PASSWORD
-  - name: CLOUDANT_APIKEY
-    valueFrom:
-      configMapKeyRef:
-        name: node-red-config
-        key: CLOUDANT_APIKEY
-  - name: CLOUDANT_URL
-    valueFrom:
-      configMapKeyRef:
-        name: node-red-config
-        key: CLOUDANT_URL
-  - name: CLOUDANT_HOST
-    valueFrom:
-      configMapKeyRef:
-        name: node-red-config
-        key: CLOUDANT_HOST
-  - name: CLOUDANT_IAM_APIKEY
-    valueFrom:
-      configMapKeyRef:
-        name: node-red-config
-        key: CLOUDANT_IAM_APIKEY
-  - name: CLOUDANT_IAM_APIKEY_NAME
-    valueFrom:
-      configMapKeyRef:
-        name: node-red-config
-        key: CLOUDANT_IAM_APIKEY_NAME
-  - name: CLOUDANT_IAM_ROLE_CRN
-    valueFrom:
-      configMapKeyRef:
-        name: node-red-config
-        key: CLOUDANT_IAM_ROLE_CRN
-  - name: CLOUDANT_IAM_SERVICE_ID_CRN
-    valueFrom:
-      configMapKeyRef:
-        name: node-red-config
-        key: CLOUDANT_IAM_SERVICE_ID_CRN
-  - name: CLOUDANT_PASSWORD
-    valueFrom:
-      configMapKeyRef:
-        name: node-red-config
-        key: CLOUDANT_PASSWORD
-  - name: CLOUDANT_PORT
-    valueFrom:
-      configMapKeyRef:
-        name: node-red-config
-        key: CLOUDANT_PORT
-  - name: CLOUDANT_USERNAME
-    valueFrom:
-      configMapKeyRef:
-        name: node-red-config
-        key: CLOUDANT_USERNAME
-  - name: CLOUDANT_SERVICE_INFO
-    valueFrom:
-      configMapKeyRef:
-        name: node-red-config
-        key: CLOUDANT_SERVICE_INFO
+insert after:
+    spec:
+      containers:
+        - name: node-red-toolchain-20220305064824039
+          image: >-
+            de.icr.io/motiondetection/node-red-toolchain-20220305064824039@sha256:8a115887a1f9c30a92b859e81a03d93f53d9431afd00ca5b70896f3b2d332685
+          ports:
+            - containerPort: 3000
+              protocol: TCP
+
+-->
+
+          env:
+            - name: NODE_RED_STORAGE_NAME
+              valueFrom:
+                configMapKeyRef:
+                  name: node-red-config
+                  key: NODE_RED_STORAGE_NAME
+            - name: NODE_RED_STORAGE_DB_NAME
+              valueFrom:
+                configMapKeyRef:
+                  name: node-red-config
+                  key: NODE_RED_STORAGE_DB_NAME
+            - name: NODE_RED_USERNAME
+              valueFrom:
+                configMapKeyRef:
+                  name: node-red-config
+                  key: NODE_RED_USERNAME
+            - name: NODE_RED_PASSWORD
+              valueFrom:
+                configMapKeyRef:
+                  name: node-red-config
+                  key: NODE_RED_PASSWORD
+            - name: CLOUDANT_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: node-red-config
+                  key: CLOUDANT_URL
+            - name: CLOUDANT_PASSWORD
+              valueFrom:
+                configMapKeyRef:
+                  name: node-red-config
+                  key: CLOUDANT_PASSWORD
+            - name: CLOUDANT_USERNAME
+              valueFrom:
+                configMapKeyRef:
+                  name: node-red-config
+                  key: CLOUDANT_USERNAME
